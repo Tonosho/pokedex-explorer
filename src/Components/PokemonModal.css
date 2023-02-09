@@ -1,0 +1,63 @@
+.PokemonModal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #00000070;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.PokemonModal-window {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    min-width: fit-content;
+    min-height: fit-content;
+    /* margin: 0 auto; */
+    /* max-height: fit-content; */
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 30px 30px 10px 30px;
+    /* overflow: auto; */
+    box-shadow: 1px 1px 10px grey;
+    opacity: 1;
+}
+
+.PokemonModal-window h2 {
+    font-size: 2em;
+}
+
+.PokemonModal-profile {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 35%;
+}
+
+.PokemonModal-mainInfos {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0px 8px 0px;
+}
+
+.PokemonModal-mainInfos p {
+    font-weight: bold;
+    margin: 3px;
+}
+
+.PokemonModal-subInfos {
+    color: grey;
+    margin: 0px 0px 8px 8px;
+}
+
+.PokemonModal-subInfos p {
+    font-weight: bold;
+    font-size: 0.9em;
+    color: grey;
+    margin: 2px;
+}

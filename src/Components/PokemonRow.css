@@ -1,0 +1,37 @@
+.PokemonRow-even {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    width: 550px;
+    background-color: #eeeeee;
+    border-radius: 12px 12px 12px 12px;
+}
+
+.PokemonRow-odd {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    width: 550px;
+    border-radius: 12px 12px 12px 12px;
+}
+
+.PokemonRow-items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 500px;
+}
+
+.PokemonRow-icon {
+    opacity: 70%;
+    transition: 0.2s;
+    width: 10%;
+    cursor: pointer;
+}
+
+.PokemonRow-icon:hover {
+    opacity: 100%;
+    transition: 0.2s;
+}
