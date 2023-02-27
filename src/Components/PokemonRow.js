@@ -1,29 +1,35 @@
-import './PokemonRow.css';
-import pokedexIcon from '../Images/pokedexIcon.png';
+import "./PokemonRow.css";
+import pokedexIcon from "../Images/pokedexIcon.png";
 
 export const PokemonRow = (props) => {
 
-    const { rowIndex, pokemonName, pokemonImg, isClicked, infos } = props;
+  const { rowIndex, isClicked, pokemon } = props;
 
-    const name = pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1); // Does : get name first letter uppercased
+  const isEven = rowIndex % 2 === 0;
 
-    return (
-        <div className={(rowIndex % 2) === 0 ? "PokemonRow-even" : "PokemonRow-odd"} > 
+  return (
+    <div className={`PokemonRow ${isEven ? "m-even" : ""}`}>
+      <div className="PokemonRow-items">
 
-            <div className="PokemonRow-items">
-                <img
-                    src={pokemonImg}
-                    alt="Pokemon illustration" />
-                <div>{name}</div>
-                <img
-                    src={pokedexIcon}
-                    alt="pokedex-icon"
-                    className="PokemonRow-icon"
-                    onClick={() => { isClicked(name, infos) }} // Does : Bring pokemon datas to parent; Goal : show modal with these datas
-                />
-            </div>
+        <img
+          src={pokemon.sprites.front_default}
+          alt={`Illustration of ${pokemon.name}`}
+        />
 
-        </div>
+        <h2>{pokemon.name}</h2>
 
-    )
-}
+        <button
+          className={`PokemonRow-button ${isEven ? "m-even" : ""}`}
+          onClick={() => { isClicked(pokemon) }} // Does : Bring pokemon datas to parent; Goal : show modal with these datas
+        >
+          <img
+            src={pokedexIcon}
+            alt="Pokedex icon"
+            className="PokemonRow-icon"
+          />
+        </button>
+
+      </div>
+    </div>
+  );
+};

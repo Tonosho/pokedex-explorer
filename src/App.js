@@ -1,76 +1,84 @@
-import './App.css';
-import { PokemonRow } from './Components/PokemonRow'
-import { PokemonModal } from './Components/PokemonModal';
-import { useState, useEffect } from 'react';
+import "./App.css";
+import { PokemonRow } from "./Components/PokemonRow";
+import { PokemonModal } from "./Components/PokemonModal";
+import { useState, useEffect, Fragment } from "react";
 
 // TO DO
 
 // [] insérer deux cercles dans la pokeball
 // [] corriger centrement éléments d'une row
+// [] rendre la row cliquable au lieu du bouton 
+// [] responsive mobile
 
 // API LINK : "https://pokeapi.co/api/v2/pokemon?limit=25&offset=0"
 
-const App = () => {
-
+export const App = () => {
   const [pokemonData, setPokemonData] = useState([]);
   const [offset, setOffset] = useState(0);
   const [modalData, setModalData] = useState();
-  console.log("MODALDATA", modalData);
   const [showModal, setShowModal] = useState(false);
 
   // FETCH API
   useEffect(() => {
     const pokedexData = async () => {
-      const data = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=25&offset=${offset}`)
-      const jsonResponse = await data.json()
-      const pokemonList = jsonResponse.results; 
+      const data = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=25&offset=${offset}`);
+      const jsonResponse = await data.json();
+      const pokemonList = jsonResponse.results;
 
-      for (let element of pokemonList) {
-        const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${element.name}`) // Does : fetch data for each pokemon
+      for (let pokemon of pokemonList) {
+        const capitalizedName = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1); // Does : get first letter of name uppercased
+
+        const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`); // Does : fetch data for each pokemon
         const fetchedInfo = await data.json();
-        setPokemonData((pokemonData) => [...pokemonData, fetchedInfo])
+
+        const newObj = {
+          ...fetchedInfo,
+          name: capitalizedName,
+        };
+
+        setPokemonData((pokemonData) => [...pokemonData, newObj]); // Does : add each pokemon to the state
       }
-    }
+    };
     pokedexData();
-  }, [offset])
+  }, [offset]);
+
+  const handleClick = (pokemon) => {
+    setModalData(pokemon);
+    setShowModal(!showModal);
+  };
 
   return (
     <div className="App">
-      {/* POKEBALL DOME */}
-      <div className="App-pokeballDome"><h1>POKEDEX</h1></div>
+
+      <div className="App-pokeballDome">
+        <h1 className="App-title">POKEDEX</h1>
+      </div>
       <div className="App-pokeballStripe"></div>
-      {/* POKEMON ROWS */}
       <div className="App-pokedex">
         {pokemonData.map((pokemon, index) => (
-          <div key={index}>
-
+          <Fragment key={pokemon.id}>
             <PokemonRow
               rowIndex={index}
-              pokemonName={pokemon.name}
-              pokemonImg={pokemon.sprites.front_default}
-              infos={pokemon}
-              isClicked={(name, infos) => {
-                setModalData({ name, infos });
-                setShowModal(!showModal)
-              }} // Does : take pokemon stats from child; Goal : provide these stats to the modal
+              pokemon={pokemon}
+              isClicked={(name, infos) => { handleClick(name, infos) }} // Does : gives pokemon data to the modal
             />
-
-          </div>
+          </Fragment>
         ))}
       </div>
 
-      <button className="App-loadMoreButton" onClick={() => setOffset(offset + 25)}>Load more</button>
+      <button
+        className="App-loadMoreButton"
+        onClick={() => setOffset(offset + 25)}
+      >
+        Load more
+      </button>
 
-      {showModal &&
+      {showModal && (
         <PokemonModal
-          name={modalData.name}
-          infos={modalData.infos}
-          clickToClose={() => setShowModal(false)} // Does : take close function from the child
+          pokemon={modalData}
+          close={() => setShowModal(false)} // Does : take close function from the child
         />
-      }
-
+      )}
     </div>
   );
-}
-
-export default App;
+};
