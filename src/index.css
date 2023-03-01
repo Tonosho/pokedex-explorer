@@ -13,5 +13,7 @@ code {
 }
 
 :root {
-  --pokeball-red: #cc1313;
+  --red: #dd2c00;
+  --green: #2e7d32;
+  --deep-blue: #1a237e;
 }

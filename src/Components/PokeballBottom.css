@@ -1,0 +1,38 @@
+
+.PokeballBottom-stripe {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: black;
+  height: 4px;
+  width: 600px;
+}
+
+.PokeballBottom-blackCircle {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: black;
+  height: 50px;
+  width: 100px;
+  border-radius: 0 0 50px 50px;
+}
+
+.PokeballBottom-whiteCircle {
+  background-color: white;
+  height: 35px;
+  width: 70px;
+  border-radius: 0 0 35px 35px;
+}
+
+.PokeballBottom-dome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  min-height: 300px;
+  width: 600px;
+  border-radius: 0 0 300px 300px;
+}
+

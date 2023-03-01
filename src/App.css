@@ -2,8 +2,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: auto;
+  justify-content: center;
+  min-height: 100vh;
+  height: fit-content;
   background-color: #eeeeee;
+  padding: 5% 0 5% 0;
 }
 
 h1 {
@@ -21,35 +24,25 @@ button {
   cursor: pointer;
 }
 
-.App-pokeballDome {
-  background-color: #dd2c00;
-  margin-top: 50px;
-  min-height: 300px;
-  width: 600px;
-  border-radius: 300px 300px 0px 0px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.App-pokeballStripe {
-  background-color: black;
-  height: 15px;
-  width: 600px;
-}
-
 .App-pokedex {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 600px;
   background-color: white;
-  padding: 50px 0px 50px 0px;
-  border-radius: 0px 0px 12px 12px;
+  padding: 70px 0px 50px 0px;
+}
+
+.App-pokeballTop {
+  z-index: 1;
+}
+
+.App-pokeballBottom {
+  margin-top: -6px;
 }
 
 .App-loadMoreButton {
-  margin: 30px 0px 60px 0px;
+  margin: 30px 0px 30px 0px;
   font-size: 1.3em;
   font-weight: bold;
   background-color: #eeeeee;
