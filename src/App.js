@@ -9,11 +9,12 @@ import { useState, useEffect, Fragment } from "react";
 
 // IDEES
 // [] pagination du pokedex
-// [] pouvoir passer d'un pokemon à l'autre dans la modal
+// [x] pouvoir passer d'un pokemon à l'autre dans la modal
 
 // FONCTIONNEL
 // [x] rendre row cliquable
 // [] responsive mobile
+// [] griser les boutons next et previous quand la limite est atteinte
 
 // STYLE
 // [] hover sur les rows
@@ -25,12 +26,11 @@ import { useState, useEffect, Fragment } from "react";
 
 export const App = () => {
   const [pokemonData, setPokemonData] = useState([]);
-  console.log("POKEMONDATA", pokemonData);
   const [offset, setOffset] = useState(0);
   const [modalData, setModalData] = useState();
+  console.log("Modal data :", modalData);
   const [showPokedex, setShowPokedex] = useState(false);
   const [showModal, setShowModal] = useState(false);
-
 
   // FETCH API
   useEffect(() => {
@@ -59,6 +59,14 @@ export const App = () => {
     setModalData(pokemon);
     setShowModal(!showModal);
   };
+
+  const changePokemon = (increment) => {
+    for (let pokemon of pokemonData) {
+      if (pokemon.id === modalData.id + increment) {
+        setModalData(pokemon)
+      }
+    }
+  }
 
   return (
     <div className="App">
@@ -94,6 +102,7 @@ export const App = () => {
         <PokemonModal
           pokemon={modalData}
           close={() => setShowModal(false)} // Does : take close function from the child
+          onChange={(increment) => changePokemon(increment)}
         />
       )}
 
