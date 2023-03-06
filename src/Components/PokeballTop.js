@@ -7,7 +7,7 @@ export const PokeballTop = (props) => {
     return (
         <div className="PokeballTop">
             <div className="PokeballTop-dome">
-                <h1>POKEDEX</h1>
+                <h1>POKEDEX <br /> EXPLORER</h1>
             </div >
             <div className="PokeballTop-stripe">
                 <div className="PokeballTop-blackCircle">

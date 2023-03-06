@@ -19,11 +19,13 @@ import { useState, useEffect, Fragment } from "react";
 // [] hover sur les rows
 // [x] variables de couleurs
 // [] changer typo
+// [x] ajouter hover bouton pokeball
 
 // API LINK : "https://pokeapi.co/api/v2/pokemon?limit=25&offset=0"
 
 export const App = () => {
   const [pokemonData, setPokemonData] = useState([]);
+  console.log("POKEMONDATA", pokemonData);
   const [offset, setOffset] = useState(0);
   const [modalData, setModalData] = useState();
   const [showPokedex, setShowPokedex] = useState(false);
@@ -83,7 +85,7 @@ export const App = () => {
             className="App-loadMoreButton"
             onClick={() => setOffset(offset + 25)}
           >
-            Load more
+            Load more ...
           </button>
 
         </div>)}
