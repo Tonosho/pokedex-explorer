@@ -1,3 +1,4 @@
+
 .PokeballTop-dome {
     display: flex;
     flex-direction: column;
@@ -17,8 +18,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
-    height: 12px;
+    background-color: #000;
+    height: 20px;
     width: 600px;
   }
 
@@ -26,16 +27,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
+    background-color: #000;
     height: 100px;
     width: 100px;
-    border-radius: 50px 50px 50px 50px;
+    border-radius: 50px;
   }
 
   .PokeballTop-whiteCircle {
-    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
     height: 60px;
     width: 60px;
-    border-radius: 30px 30px 30px 30px;
-    background: white;
+    border-radius: 30px;
+  }
+
+  .PokeballTop-button {
+    border: 2px solid #000;
+    background-color: #fff;
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
   }

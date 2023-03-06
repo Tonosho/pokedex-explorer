@@ -17,7 +17,7 @@ export const PokemonModal = (props) => {
         />
         <h2>{pokemon.name}</h2>
         <div className="PokemonModal-mainInfos">
-          <p>Order: {pokemon.order} </p>
+          <p>Order: {pokemon.order}</p>
           <p>Weight: {pokemon.weight}</p>
           <p>Height: {pokemon.height}</p>
         </div>

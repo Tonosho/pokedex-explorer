@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  background-color: black;
+  background-color: #000;
   height: 4px;
   width: 600px;
 }
@@ -12,14 +12,14 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  background-color: black;
+  background-color: #000;
   height: 50px;
   width: 100px;
   border-radius: 0 0 50px 50px;
 }
 
 .PokeballBottom-whiteCircle {
-  background-color: white;
+  background-color: #fff;
   height: 35px;
   width: 70px;
   border-radius: 0 0 35px 35px;
@@ -30,7 +30,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: #fff;
   min-height: 300px;
   width: 600px;
   border-radius: 0 0 300px 300px;

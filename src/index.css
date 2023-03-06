@@ -13,7 +13,12 @@ code {
 }
 
 :root {
-  --red: #dd2c00;
+  --font-regular: 'Quantico', Arial, sans-serif;
+  --red: #e53935;
   --green: #2e7d32;
-  --deep-blue: #1a237e;
+  --deep-blue: #031535;
+  --light-grey: #eeeeee;
+  --border: 1px solid var(--red);
+  --radius: 2px 2px 2px 2px;
 }
+

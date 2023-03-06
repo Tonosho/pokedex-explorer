@@ -2,15 +2,22 @@ import "./App.css";
 import { PokemonRow } from "./Components/PokemonRow";
 import { PokemonModal } from "./Components/PokemonModal";
 import { PokeballTop } from "./Components/PokeballTop";
-import { useState, useEffect, Fragment } from "react";
 import { PokeballBottom } from "./Components/PokeballBottom";
+import { useState, useEffect, Fragment } from "react";
 
 // TO DO
 
-// [] insérer deux cercles dans la pokeball
-// [] corriger centrement éléments d'une row
-// [] rendre la row cliquable au lieu du bouton 
+// IDEES
+// [] pagination du pokedex
+// [] pouvoir passer d'un pokemon à l'autre dans la modal
+
+// FONCTIONNEL
+// [x] rendre row cliquable
 // [] responsive mobile
+
+// STYLE
+// [] hover sur les rows
+// [x] variables de couleurs
 // [] changer typo
 
 // API LINK : "https://pokeapi.co/api/v2/pokemon?limit=25&offset=0"
@@ -56,7 +63,8 @@ export const App = () => {
 
       <div className="App-pokeballTop">
         <PokeballTop
-          onClickParent={() => setShowPokedex(!showPokedex)} />
+          handleClick={() => setShowPokedex(!showPokedex)}
+        />
       </div>
 
       {showPokedex && (

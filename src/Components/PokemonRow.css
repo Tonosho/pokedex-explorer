@@ -1,7 +1,3 @@
-.PokemonRow h2 {
-  font-size: 16px;
-}
-
 .PokemonRow {
   display: flex;
   align-items: center;
@@ -9,10 +5,30 @@
   height: 150px;
   width: 550px;
   border-radius: 12px;
+  margin: 2px 0 2px 0;
+  transition: 0.1s;
+}
+
+.PokemonRow h2 {
+  font-size: 18px;
+  font-family: var(--font-regular);
+}
+
+.PokemonRow:hover {
+  /* box-shadow: 3px 3px 3px black; */
+  opacity: 0.6;
+  transition: 0.2s;
+}
+
+.PokemonRow-button {
+  width: 100%;
+  height: 100%;
+  background: none;
+  transition: 0.2s;
 }
 
 .PokemonRow.m-even {
-  background-color: #eeeeee;
+  background-color: var(--light-grey);
 }
 
 .PokemonRow-items {
@@ -21,22 +37,6 @@
   align-items: center;
   width: 500px;
 }
-
-.PokemonRow-button {
-  background: none;
-  padding: 8px 14px;
-  border-radius: 8px;
-  /* box-shadow: 2px 2px 2px #aaa; */
-  /* background: #ddd; */
-}
-
-/* .PokemonRow-button.m-even {
-  background: #fff;
-} */
-
-/* .PokemonRow-button:hover {
-  transform: translate(4px, 4px);
-} */
 
 .PokemonRow-icon {
   opacity: 100%;

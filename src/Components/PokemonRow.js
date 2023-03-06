@@ -9,27 +9,28 @@ export const PokemonRow = (props) => {
 
   return (
     <div className={`PokemonRow ${isEven ? "m-even" : ""}`}>
-      <div className="PokemonRow-items">
+      <button
+        className="PokemonRow-button"
+        onClick={() => { isClicked(pokemon) }} // Does : Bring pokemon datas to parent; Goal : show modal with these datas
+      >
+        <div className="PokemonRow-items">
 
-        <img
-          src={pokemon.sprites.front_default}
-          alt={`Illustration of ${pokemon.name}`}
-        />
+          <img
+            src={pokemon.sprites.front_default}
+            alt={`Illustration of ${pokemon.name}`}
+          />
 
-        <h2>{pokemon.name}</h2>
+          <h2>{pokemon.name}</h2>
 
-        <button
-          className={`PokemonRow-button ${isEven ? "m-even" : ""}`}
-          onClick={() => { isClicked(pokemon) }} // Does : Bring pokemon datas to parent; Goal : show modal with these datas
-        >
           <img
             src={pokedexIcon}
             alt="Pokedex icon"
             className="PokemonRow-icon"
           />
-        </button>
 
-      </div>
-    </div>
+        </div>
+
+      </button >
+    </div >
   );
 };

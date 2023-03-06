@@ -2,7 +2,7 @@ import "./PokeballTop.css";
 
 export const PokeballTop = (props) => {
 
-    const { onClickParent } = props;
+    const { handleClick } = props;
 
     return (
         <div className="PokeballTop">
@@ -11,11 +11,12 @@ export const PokeballTop = (props) => {
             </div >
             <div className="PokeballTop-stripe">
                 <div className="PokeballTop-blackCircle">
-                    {/* <div className="PokeballTop-whiteCircle"></div> */}
-                    <button
-                        className="PokeballTop-whiteCircle"
-                        onClick={() => onClickParent()}>
-                    </button>
+                    <div className="PokeballTop-whiteCircle">
+                        <button
+                            className="PokeballTop-button"
+                            onClick={() => handleClick()}>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
