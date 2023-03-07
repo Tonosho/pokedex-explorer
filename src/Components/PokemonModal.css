@@ -81,7 +81,7 @@
     margin-left: 4px;
 }
 
-.PokemonModal-background button {
+.PokemonModal-button {
     background: none;
     font-family: var(--font-regular);
     border-bottom: 1px solid #000;
@@ -89,7 +89,16 @@
     transition: 0.2s;
 }
 
-.PokemonModal-background button:hover {
+.PokemonModal-button:hover {
     opacity: 0.6;
     transition: 0.2s;
+}
+
+.PokemonModal-button.m-disabled {
+    color: var(--medium-grey);
+    border-bottom: none;
+    cursor: default;
+}
+.PokemonModal-button.m-disabled:hover {
+    opacity: 1;
 }

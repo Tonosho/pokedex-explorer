@@ -2,7 +2,7 @@ import "./PokemonModal.css";
 
 export const PokemonModal = (props) => {
 
-  const { pokemon, close, onChange } = props;
+  const { pokemon, close, onChange, lastPokemon } = props;
 
   return (
     <div className="PokemonModal-background">
@@ -40,10 +40,26 @@ export const PokemonModal = (props) => {
 
         <div className="PokemonModal-buttonsContainer">
           <div className="PokemonModal-onChangeButtons">
-            <button onClick={() => onChange(-1)}>Previous</button>
-            <button onClick={() => onChange(+1)}>Next</button>
+            <button
+              onClick={() => onChange(-1)}
+              className={`PokemonModal-button ${pokemon.id - 1 === 0 ? "m-disabled" : ""}`}
+            >
+              Previous
+            </button>
+            <button
+              onClick={() => onChange(+1)}
+              className={`PokemonModal-button ${pokemon.id + 1 > lastPokemon ? "m-disabled" : ""}`}
+            >
+              Next
+            </button>
           </div>
-          <button onClick={() => close()}> Close</button>
+
+          <button
+            className="PokemonModal-button"
+            onClick={() => close()}
+          >
+            Close
+          </button>
         </div>
 
       </div>

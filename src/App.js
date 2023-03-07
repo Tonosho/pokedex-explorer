@@ -10,25 +10,24 @@ import { useState, useEffect, Fragment } from "react";
 // IDEES
 // [] pagination du pokedex
 // [x] pouvoir passer d'un pokemon à l'autre dans la modal
+// [] pouvoir utiliser le clavier
 
 // FONCTIONNEL
 // [x] rendre row cliquable
 // [] responsive mobile
-// [] griser les boutons next et previous quand la limite est atteinte
-
-// STYLE
-// [] hover sur les rows
-// [x] variables de couleurs
-// [] changer typo
-// [x] ajouter hover bouton pokeball
+// [x] griser les boutons next et previous quand la limite est atteinte
+// [] corriger index quand on charge des nouveaux pokemon ?
+// [] ouverture progressive de la pokeball
+// [] inclure filtrage par type de pokemon
 
 // API LINK : "https://pokeapi.co/api/v2/pokemon?limit=25&offset=0"
 
 export const App = () => {
   const [pokemonData, setPokemonData] = useState([]);
   const [offset, setOffset] = useState(0);
+  const [filteredPokemon, setFilteredPokemon] = useState([]);
+  const [currentFilter, setCurrentFilter] = useState()
   const [modalData, setModalData] = useState();
-  console.log("Modal data :", modalData);
   const [showPokedex, setShowPokedex] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
@@ -55,7 +54,7 @@ export const App = () => {
     pokedexData();
   }, [offset]);
 
-  const handleClick = (pokemon) => {
+  const showPokemon = (pokemon) => {
     setModalData(pokemon);
     setShowModal(!showModal);
   };
@@ -64,6 +63,19 @@ export const App = () => {
     for (let pokemon of pokemonData) {
       if (pokemon.id === modalData.id + increment) {
         setModalData(pokemon)
+      }
+    }
+  }
+
+  const typeFilter = (selectedType) => {
+    setFilteredPokemon([])
+
+    for (let pokemon of pokemonData) {
+      let searchType = pokemon.types.map(e => e.type.name);
+      if (searchType.find(type => type === selectedType)) {
+        setFilteredPokemon(filteredPokemon => [...filteredPokemon, pokemon])
+      } else if (selectedType === "none") {
+        setFilteredPokemon([])
       }
     }
   }
@@ -79,19 +91,38 @@ export const App = () => {
 
       {showPokedex && (
         <div className="App-pokedex">
-          {pokemonData.map((pokemon, index) => (
+
+          <select
+            className="App-typeSelector"
+            // value={e.target.value}
+            onChange={(e) => {
+              typeFilter(e.target.value);
+              setCurrentFilter(e.target.value)
+            }}
+          >
+            <option value="none">None</option>
+            <option value="normal">Normal</option>
+            <option value="grass">Grass</option>
+            <option value="water">Water</option>
+            <option value="fire">Fire</option>
+          </select>
+
+          {(filteredPokemon.length > 0 ? filteredPokemon : pokemonData).map((pokemon, index) => (
             <Fragment key={pokemon.id}>
               <PokemonRow
                 rowIndex={index}
                 pokemon={pokemon}
-                isClicked={(name, infos) => { handleClick(name, infos) }} // Does : gives pokemon data to the modal
+                isClicked={(name, infos) => { showPokemon(name, infos) }} // Does : gives pokemon data to the modal
               />
             </Fragment>
           ))}
 
           <button
             className="App-loadMoreButton"
-            onClick={() => setOffset(offset + 25)}
+            onClick={() => {
+              setOffset(offset + 25);
+              typeFilter(currentFilter);
+            }}
           >
             Load more ...
           </button>
@@ -101,8 +132,9 @@ export const App = () => {
       {showModal && (
         <PokemonModal
           pokemon={modalData}
-          close={() => setShowModal(false)} // Does : take close function from the child
-          onChange={(increment) => changePokemon(increment)}
+          close={() => setShowModal(false)} // Does : take close function from child
+          onChange={(increment) => changePokemon(increment)} // Does : take previous or next functions from child
+          lastPokemon={pokemonData[pokemonData.length - 1].id} // Gives id of the last pokemon loaded in the app
         />
       )}
 
