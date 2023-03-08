@@ -3,19 +3,17 @@ import { PokemonRow } from "./Components/PokemonRow";
 import { PokemonModal } from "./Components/PokemonModal";
 import { PokeballTop } from "./Components/PokeballTop";
 import { PokeballBottom } from "./Components/PokeballBottom";
+import { TypeSelector } from "./Components/TypeSelector";
 import { useState, useEffect, Fragment } from "react";
 
 // TO DO
 
 // IDEES
 // [] pagination du pokedex
-// [x] pouvoir passer d'un pokemon à l'autre dans la modal
 // [] pouvoir utiliser le clavier
 
 // FONCTIONNEL
-// [x] rendre row cliquable
 // [] responsive mobile
-// [x] griser les boutons next et previous quand la limite est atteinte
 // [] corriger index quand on charge des nouveaux pokemon ?
 // [] ouverture progressive de la pokeball
 // [] inclure filtrage par type de pokemon
@@ -83,7 +81,7 @@ export const App = () => {
       if (pokemonTypes.find(type => type === selectedType)) {
         setFilteredPokemon(filteredPokemon => [...filteredPokemon, pokemon])
       }
-      else if (selectedType === "none") {
+      else if (selectedType === "all") {
         setFilteredPokemon([])
       }
     }
@@ -107,17 +105,9 @@ export const App = () => {
       {showPokedex && (
         <div className="App-pokedex">
 
-          <select
-            className="App-typeSelector"
-            // value={e.target.value}
-            onChange={(e) => selectType(e.target.value)}
-          >
-            <option value="none">None</option>
-            <option value="normal">Normal</option>
-            <option value="grass">Grass</option>
-            <option value="water">Water</option>
-            <option value="fire">Fire</option>
-          </select>
+          <TypeSelector
+            type={(type) => selectType(type)}
+          />
 
           {(filteredPokemon.length > 0 ? filteredPokemon : pokemonData).map((pokemon, index) => (
             <Fragment key={pokemon.id}>
