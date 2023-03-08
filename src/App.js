@@ -26,10 +26,10 @@ export const App = () => {
   const [pokemonData, setPokemonData] = useState([]);
   const [offset, setOffset] = useState(0);
   const [filteredPokemon, setFilteredPokemon] = useState([]);
-  const [currentFilter, setCurrentFilter] = useState()
+  const [currentFilter, setCurrentFilter] = useState();
   const [modalData, setModalData] = useState();
-  const [showPokedex, setShowPokedex] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showPokedex, setShowPokedex] = useState(false);
 
   // FETCH API
   useEffect(() => {
@@ -54,11 +54,13 @@ export const App = () => {
     pokedexData();
   }, [offset]);
 
+  // SHOW CLICKED POKEMON IN MODAL
   const showPokemon = (pokemon) => {
     setModalData(pokemon);
     setShowModal(!showModal);
   };
 
+  // CHANGE TO PREVIOUS / NEXT POKEMON IN MODAL
   const changePokemon = (increment) => {
     for (let pokemon of pokemonData) {
       if (pokemon.id === modalData.id + increment) {
@@ -67,17 +69,30 @@ export const App = () => {
     }
   }
 
-  const typeFilter = (selectedType) => {
-    setFilteredPokemon([])
+  // SELECT A TYPE OF POKEMON
+  const selectType = (type) => {
+    filterByType(type);
+    setCurrentFilter(type);
+  }
 
+  // FILTERING POKEMON BY TYPE FUNCTION
+  const filterByType = (selectedType) => {
+    setFilteredPokemon([])
     for (let pokemon of pokemonData) {
-      let searchType = pokemon.types.map(e => e.type.name);
-      if (searchType.find(type => type === selectedType)) {
+      let pokemonTypes = pokemon.types.map(type => type.type.name);
+      if (pokemonTypes.find(type => type === selectedType)) {
         setFilteredPokemon(filteredPokemon => [...filteredPokemon, pokemon])
-      } else if (selectedType === "none") {
+      }
+      else if (selectedType === "none") {
         setFilteredPokemon([])
       }
     }
+  }
+
+  // LOAD 25 NEXT POKEMON AND UPDATE ACTIVE FILTER
+  const loadMore = () => {
+    setOffset(offset + 25);
+    filterByType(currentFilter);
   }
 
   return (
@@ -95,10 +110,7 @@ export const App = () => {
           <select
             className="App-typeSelector"
             // value={e.target.value}
-            onChange={(e) => {
-              typeFilter(e.target.value);
-              setCurrentFilter(e.target.value)
-            }}
+            onChange={(e) => selectType(e.target.value)}
           >
             <option value="none">None</option>
             <option value="normal">Normal</option>
@@ -119,10 +131,7 @@ export const App = () => {
 
           <button
             className="App-loadMoreButton"
-            onClick={() => {
-              setOffset(offset + 25);
-              typeFilter(currentFilter);
-            }}
+            onClick={() => loadMore()}
           >
             Load more ...
           </button>
