@@ -23,11 +23,10 @@ import { useState, useEffect, Fragment } from "react";
 export const App = () => {
   const [pokemonData, setPokemonData] = useState([]);
   const [offset, setOffset] = useState(0);
-  const [filteredPokemon, setFilteredPokemon] = useState([]);
-  const [currentFilter, setCurrentFilter] = useState();
+  const [showPokedex, setShowPokedex] = useState(false);
+  const [currentFilter, setCurrentFilter] = useState('all');
   const [modalData, setModalData] = useState();
   const [showModal, setShowModal] = useState(false);
-  const [showPokedex, setShowPokedex] = useState(false);
 
   // FETCH API
   useEffect(() => {
@@ -65,33 +64,23 @@ export const App = () => {
         setModalData(pokemon)
       }
     }
-  }
+  };
 
-  // SELECT A TYPE OF POKEMON
-  const selectType = (type) => {
-    filterByType(type);
-    setCurrentFilter(type);
-  }
+  // ARRAY OF POKEMON TO BE DISPLAYED IN POKEDEX BODY
+  let displayedPokemon = [];
 
-  // FILTERING POKEMON BY TYPE FUNCTION
-  const filterByType = (selectedType) => {
-    setFilteredPokemon([])
-    for (let pokemon of pokemonData) {
-      let pokemonTypes = pokemon.types.map(type => type.type.name);
-      if (pokemonTypes.find(type => type === selectedType)) {
-        setFilteredPokemon(filteredPokemon => [...filteredPokemon, pokemon])
-      }
-      else if (selectedType === "all") {
-        setFilteredPokemon([])
-      }
-    }
-  }
+  // FILTER THE DISPLAYED POKEMON DEPENDING ON TYPE FILTER
+  if (currentFilter === "all") {
+    displayedPokemon = pokemonData;
+  };
 
-  // LOAD 25 NEXT POKEMON AND UPDATE ACTIVE FILTER
-  const loadMore = () => {
-    setOffset(offset + 25);
-    filterByType(currentFilter);
-  }
+  if (currentFilter !== "all") {
+    displayedPokemon = pokemonData
+      .filter(
+        pokemon => pokemon.types
+          .map(types => types.type.name)
+          .find(typeName => typeName === currentFilter));
+  };
 
   return (
     <div className="App">
@@ -106,10 +95,10 @@ export const App = () => {
         <div className="App-pokedex">
 
           <TypeSelector
-            type={(type) => selectType(type)}
+            type={(type) => setCurrentFilter(type)}
           />
 
-          {(filteredPokemon.length > 0 ? filteredPokemon : pokemonData).map((pokemon, index) => (
+          {displayedPokemon.map((pokemon, index) => (
             <Fragment key={pokemon.id}>
               <PokemonRow
                 rowIndex={index}
@@ -121,7 +110,7 @@ export const App = () => {
 
           <button
             className="App-loadMoreButton"
-            onClick={() => loadMore()}
+            onClick={() => setOffset(offset + 25)}
           >
             Load more ...
           </button>
