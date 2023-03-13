@@ -25,7 +25,7 @@ export const App = () => {
   const [offset, setOffset] = useState(0);
   const [showPokedex, setShowPokedex] = useState(false);
   const [currentFilter, setCurrentFilter] = useState('all');
-  const [modalData, setModalData] = useState();
+  const [modalData, setModalData] = useState({});
   const [showModal, setShowModal] = useState(false);
 
   // FETCH API
@@ -103,7 +103,7 @@ export const App = () => {
               <PokemonRow
                 rowIndex={index}
                 pokemon={pokemon}
-                isClicked={(name, infos) => { showPokemon(name, infos) }} // Does : gives pokemon data to the modal
+                isClicked={(name, infos) => { showPokemon(name, infos) }} // Does : gives pokemon data to the modal  
                 isSelected={pokemon.name === modalData.name && showModal === true ? true : false}
               />
             </Fragment>
