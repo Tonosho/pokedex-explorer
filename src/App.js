@@ -104,6 +104,7 @@ export const App = () => {
                 rowIndex={index}
                 pokemon={pokemon}
                 isClicked={(name, infos) => { showPokemon(name, infos) }} // Does : gives pokemon data to the modal
+                isSelected={pokemon.name === modalData.name && showModal === true ? true : false}
               />
             </Fragment>
           ))}

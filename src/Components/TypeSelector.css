@@ -1,8 +1,11 @@
 .TypeSelector {
-width: 550px;
-margin: 5px 0 20px 0;
+    width: 550px;
+    margin: 5px 0 20px 0;
 }
 
 select {
-    background: none;
+    background-color: transparent;
+    border: none;
+    /* font-family: var(--font-regular); */
+
 }

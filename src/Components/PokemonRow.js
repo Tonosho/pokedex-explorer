@@ -3,12 +3,12 @@ import pokedexIcon from "../Images/pokedexIcon.png";
 
 export const PokemonRow = (props) => {
 
-  const { rowIndex, isClicked, pokemon } = props;
+  const { rowIndex, isClicked, pokemon, isSelected } = props;
 
   const isEven = rowIndex % 2 === 0;
 
   return (
-    <div className={`PokemonRow ${isEven ? "m-even" : ""}`}>
+    <div className={`PokemonRow ${isEven ? "m-even" : ""} ${isSelected ? "m-selected" : ""}`}>
       <button
         className="PokemonRow-button"
         onClick={() => { isClicked(pokemon) }} // Does : Bring pokemon datas to parent; Goal : show modal with these datas

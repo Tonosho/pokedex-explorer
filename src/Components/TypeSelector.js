@@ -16,6 +16,7 @@ export const TypeSelector = (props) => {
                 <option value="water">Water</option>
                 <option value="fire">Fire</option>
                 <option value="poison">Poison</option>
+                <option value="electric">Electric</option>
             </select>
         </div>
     )
