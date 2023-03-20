@@ -1,11 +1,11 @@
-import "./PokemonModal.css";
+import "../Styles/PokemonModal.css";
 
 export const PokemonModal = (props) => {
 
   const { pokemon, close, onChange, lastPokemon } = props;
 
   return (
-    <div className="PokemonModal-background">
+    <>
 
       <div className="PokemonModal-window">
 
@@ -63,7 +63,7 @@ export const PokemonModal = (props) => {
         </div>
 
       </div>
-
-    </div>
+      <div className="PokemonModal-background" onClick={() => close()} />
+    </>
   );
 };

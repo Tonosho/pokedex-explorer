@@ -1,17 +1,38 @@
-.PokemonModal-background {
+.PokemonModal-window {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background: #00000070;
-    width: 100vw;
-    height: 100vh;
+    max-width: 500px;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    min-width: fit-content;
+    min-height: fit-content;
+    background: #fff;
+    padding: 30px 30px 10px 30px;
+    box-shadow: 1px 1px 10px var(--dark-grey);
 }
 
-.PokemonModal-window {
+.PokemonModal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #00000070;
+    cursor: pointer;
+    z-index: 1;
+}
+
+/* .PokemonModal-window {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -20,11 +41,10 @@
     min-width: fit-content;
     min-height: fit-content;
     background: #fff;
-    /* border-radius: 12px; */
     padding: 30px 30px 10px 30px;
     box-shadow: 1px 1px 10px var(--dark-grey);
     opacity: 1;
-}
+} */
 
 .PokemonModal-window h2 {
     font-size: 2em;
@@ -99,6 +119,7 @@
     border-bottom: none;
     cursor: default;
 }
+
 .PokemonModal-button.m-disabled:hover {
     opacity: 1;
 }

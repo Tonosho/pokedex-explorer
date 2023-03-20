@@ -1,0 +1,47 @@
+.Pokeball {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    background-color: var(--light-grey);
+    font-family: var(--font-regular);
+    max-height: 100vh;
+    max-width: 600px;
+    width: 100%;
+}
+
+.Pokeball-pokedex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: #fff;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.6s ease-in-out;
+    overflow-y: scroll;
+}
+
+.Pokeball-pokedex.m-show {
+    height: 4246px;
+    padding: 70px 0 0 0;
+}
+
+.Pokeball-pokeballBottom {
+    margin-top: -14px;
+}
+
+.Pokeball-loadMoreButton {
+    margin: 30px 0 40px 0;
+    padding: 5px 10px 5px 10px;
+    font-size: 18px;
+    font-family: var(--font-regular);
+    color: #000;
+    background-color: #fff;
+    transition: 0.2s;
+}
+
+.Pokeball-loadMoreButton:hover {
+    opacity: 0.5;
+    transition: 0.2s;
+}

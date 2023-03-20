@@ -2,12 +2,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 150px;
-  width: 550px;
-  /* border-radius: 12px; */
+  min-height: 120px;
+  width: 87%;
   margin: 5px 0 5px 0;
-  /* box-shadow: 0 0 1px #bdbdbd; */
   transition: 0.1s;
+  padding: 0 5% 0 0;
 }
 
 .PokemonRow.m-even {
@@ -46,7 +45,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 500px;
+  width: 100%;
 }
 
 .PokemonRow-icon {

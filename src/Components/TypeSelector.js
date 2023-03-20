@@ -1,4 +1,4 @@
-import './TypeSelector.css'; 
+import '../Styles/TypeSelector.css';
 
 export const TypeSelector = (props) => {
 

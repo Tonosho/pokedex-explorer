@@ -1,14 +1,16 @@
-.PokeballTop-dome {
+.PokeballTop {
+  z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: var(--red);
-  min-height: 300px;
-  width: 600px;
+  width: 100%;
+  aspect-ratio: 1 / 0.5;
   border-radius: 300px 300px 0 0;
-  /* box-shadow: 5px -10px blue ; */
+  position: relative;
 }
+
 
 .PokeballTop h1 {
   font-size: 24px;
@@ -16,14 +18,15 @@
 }
 
 .PokeballTop-stripe {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #000;
   height: 20px;
-  width: 600px;
-  margin-top: -10px;
-  /* box-shadow: 5px 0 blue ; */
+  width: 100%;
 }
 
 .PokeballTop-blackCircle {
@@ -31,9 +34,10 @@
   justify-content: center;
   align-items: center;
   background-color: #000;
-  height: 100px;
-  width: 100px;
-  border-radius: 50px;
+  height: auto;
+  width: 17%;
+  aspect-ratio: 1 / 1;
+  border-radius: 100%;
 }
 
 .PokeballTop-whiteCircle {
@@ -41,21 +45,23 @@
   justify-content: center;
   align-items: center;
   background-color: #fff;
-  height: 60px;
-  width: 60px;
-  border-radius: 30px;
+  height: auto;
+  width: 65%;
+  aspect-ratio: 1 / 1;
+  border-radius: 100%;
 }
 
 .PokeballTop-button {
   border: 2px solid #000;
   background-color: #fff;
-  height: 40px;
-  width: 40px;
-  border-radius: 20px;
+  height: auto;
+  width: 65%;
+  aspect-ratio: 1 / 1;
+  border-radius: 100%;
   transition: 0.3s;
 }
 
 .PokeballTop-button:hover {
- background-color: var(--cyan);
- transition: 0.3s;
+  background-color: var(--cyan);
+  transition: 0.3s;
 }

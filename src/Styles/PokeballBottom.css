@@ -1,11 +1,18 @@
+.PokeballBottom {
+  width: 100%;
+  aspect-ratio: 1 / 0.5;
+  height: 100%;
+  background: #fff;
+  border-radius: 0 0 300px 300px;
+}
 
 .PokeballBottom-stripe {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   background-color: #000;
   height: 4px;
-  width: 600px;
+  position: relative;
 }
 
 .PokeballBottom-blackCircle {
@@ -13,9 +20,11 @@
   justify-content: center;
   align-items: flex-start;
   background-color: #000;
-  height: 50px;
-  width: 100px;
-  border-radius: 0 0 50px 50px;
+  height: auto;
+  width: 17%;
+  aspect-ratio: 1 / 1;
+  border-radius: 100%;
+  clip-path: inset(50% 0 0 0);
 }
 
 .PokeballBottom-whiteCircle {
@@ -24,15 +33,3 @@
   width: 70px;
   border-radius: 0 0 35px 35px;
 }
-
-.PokeballBottom-dome {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff;
-  min-height: 300px;
-  width: 600px;
-  border-radius: 0 0 300px 300px;
-}
-

@@ -1,4 +1,4 @@
-import "./PokeballBottom.css";
+import "../Styles/PokeballBottom.css";
 
 export const PokeballBottom = () => {
 
@@ -6,10 +6,9 @@ export const PokeballBottom = () => {
         <div className="PokeballBottom">
             <div className="PokeballBottom-stripe">
                 <div className="PokeballBottom-blackCircle">
-                    {/* <div className="PokeballBottom-whiteCircle"></div> */}
+
                 </div>
             </div>
-            <div className="PokeballBottom-dome"></div >
         </div>
     )
 }

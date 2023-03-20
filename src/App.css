@@ -1,66 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
 .App {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   min-height: 100vh;
   height: fit-content;
   background-color: var(--light-grey);
   padding: 5% 0 5% 0;
   font-family: var(--font-regular);
-}
-
-h1 {
-  color: #fff;
-}
-
-h2,
-h3,
-p {
-  margin: 0;
-
-}
-
-button {
-  border: none;
-  cursor: pointer;
-}
-
-.App-pokedex {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 600px;
-  background-color: #fff;
-  padding: 70px 0px 30px 0px;
-}
-
-.App-pokeballTop {
-  z-index: 1;
-}
-
-.App-pokeballBottom {
-  margin-top: -14px;
-}
-
-.App-loadMoreButton {
-  margin: 30px 0px 30px 0px;
-  padding: 5px 10px 5px 10px;
-  font-size: 18px;
-  font-family: var(--font-regular);
-  color: #000;
-  background-color: #fff;
-  transition: 0.2s;
-  /* border: var(--border);
-  border-bottom-width: 10px;
-  border-bottom-right-radius: 10px; */
-}
-
-.App-loadMoreButton:hover {
-  opacity: 0.5;
-  transition: 0.2s;
+  max-height: 100vh;
+  justify-content: center;
 }
 
 @media (prefers-reduced-motion: no-preference) {
