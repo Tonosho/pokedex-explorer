@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Tonosho/pokedex-explorer.git/static/css/main.799f7378.css",
+    "main.js": "/Tonosho/pokedex-explorer.git/static/js/main.18e11094.js",
+    "static/js/787.4744a0b7.chunk.js": "/Tonosho/pokedex-explorer.git/static/js/787.4744a0b7.chunk.js",
+    "static/media/pokedexIcon.png": "/Tonosho/pokedex-explorer.git/static/media/pokedexIcon.c3d99f2c70aabbf10cc0.png",
+    "index.html": "/Tonosho/pokedex-explorer.git/index.html",
+    "main.799f7378.css.map": "/Tonosho/pokedex-explorer.git/static/css/main.799f7378.css.map",
+    "main.18e11094.js.map": "/Tonosho/pokedex-explorer.git/static/js/main.18e11094.js.map",
+    "787.4744a0b7.chunk.js.map": "/Tonosho/pokedex-explorer.git/static/js/787.4744a0b7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.799f7378.css",
+    "static/js/main.18e11094.js"
+  ]
+}
