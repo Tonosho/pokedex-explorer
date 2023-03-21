@@ -1,11 +1,15 @@
 import "../Styles/PokeballTop.css";
 
-export const PokeballTop = (props) => {
+interface PokeballTopProps {
+    handleClick: () => void
+};
 
-    const { handleClick, className } = props;
+export const PokeballTop = ({
+    handleClick
+}: PokeballTopProps) => {
 
     return (
-        <div className={`PokeballTop ${className || ""}`}>
+        <div className={"PokeballTop"}>
             <h1 >POKEDEX <br /> EXPLORER</h1>
             <div className="PokeballTop-stripe">
                 <div className="PokeballTop-blackCircle">
@@ -18,5 +22,5 @@ export const PokeballTop = (props) => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};

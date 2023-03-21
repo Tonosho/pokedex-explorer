@@ -8,10 +8,12 @@ import "./App.css";
 // [] pouvoir utiliser le clavier
 
 // FONCTIONNEL
-// [] responsive mobile
 // [] corriger index quand on charge des nouveaux pokemon ?
-// [] ouverture progressive de la pokeball
-// [] inclure filtrage par type de pokemon
+
+// DESIGN
+// [] espacement v mobile
+// [] couleurs
+// [] afficher types sous fromes "d'étiquettes"
 
 // API LINK : "https://pokeapi.co/api/v2/pokemon?limit=25&offset=0"
 

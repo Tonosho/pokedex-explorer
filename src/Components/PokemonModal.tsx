@@ -1,8 +1,20 @@
 import "../Styles/PokemonModal.css";
+import { Pokemon } from "../Types/globals";
 
-export const PokemonModal = (props) => {
 
-  const { pokemon, close, onChange, lastPokemon } = props;
+interface PokemonModalProps {
+  pokemon: Pokemon,
+  close: () => void,
+  onChange: (increment: number) => void,
+  lastPokemon: number
+}
+
+export const PokemonModal = ({
+  pokemon,
+  close,
+  onChange,
+  lastPokemon
+}: PokemonModalProps) => {
 
   return (
     <>

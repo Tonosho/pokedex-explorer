@@ -1,25 +1,26 @@
+/* eslint-disable */
 import { useState, useEffect, Fragment } from "react";
 import { PokeballBottom } from "./PokeballBottom";
-import { TypeSelector } from "./TypeSelector";
+import { PokemonType, TypeSelector } from "./TypeSelector";
 import { PokemonRow } from "./PokemonRow";
 import { PokemonModal } from "./PokemonModal";
-import { Pokemon } from "../Types/globals";
 import { PokeballTop } from "./PokeballTop";
+import { Pokemon } from "../Types/globals";
 import "../Styles/Pokeball.css";
-
 
 export const Pokeball = () => {
 
-    const [pokemonData, setPokemonData] = useState<Pokemon[]>([]);
-    const [offset, setOffset] = useState(0);
-    const [showPokedex, setShowPokedex] = useState(false);
-    const [currentFilter, setCurrentFilter] = useState('all');
+    const [pokemonsData, setPokemonsData] = useState<Pokemon[]>([]);
+    const [offset, setOffset] = useState<number>(0);
+    const [showPokedex, setShowPokedex] = useState<boolean>(false);
+    const [displayedPokemon, setDisplayedPokemon] = useState<Pokemon[]>();
+    const [currentFilter, setCurrentFilter] = useState<PokemonType>(PokemonType.ALL);
     const [modalData, setModalData] = useState<Pokemon>();
-    const [showModal, setShowModal] = useState(false);
-    const [displayedPokemon, setDisplayedPokemon] = useState<any>();
+
 
     useEffect(() => {
         // Get pokemon urls
+        const pokemons: Pokemon[] = [];
         const pokedexData = async () => {
             const data = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=25&offset=${offset}`);
             const jsonResponse = await data.json();
@@ -28,47 +29,42 @@ export const Pokeball = () => {
             // Fetch each pokemon url
             for (let pokemon of pokemonList) {
                 const capitalizedName = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1); // Does : get first letter of name uppercased
-                const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`); // Does : fetch data for each pokemon
+                const data = await fetch(pokemon.url); // Does : fetch data for each pokemon
                 const fetchedInfo = await data.json();
-                const newObject = {
+                const pokemonData = {
                     ...fetchedInfo,
                     name: capitalizedName,
-                };
-                setPokemonData((pokemonData) => [...pokemonData, newObject]); // Does : add each pokemon to the state
+                } as Pokemon;
+                pokemons.push(pokemonData)
             }
+            return pokemons;
         };
-        pokedexData();
+        pokedexData().then(newData => newData && setPokemonsData([...pokemonsData].concat(newData)));
     }, [offset]);
 
-    // SHOW CLICKED POKEMON IN MODAL
-    const showPokemon = (pokemon: Pokemon) => {
-        setModalData(pokemon);
-        setShowModal(!showModal);
-    };
 
     // CHANGE TO PREVIOUS / NEXT POKEMON IN MODAL
     const changePokemon = (increment: number) => {
         if (!modalData) return;
-        for (let pokemon of pokemonData) {
+        for (let pokemon of pokemonsData) {
             if (pokemon.id === modalData.id + increment) {
                 setModalData(pokemon)
             }
         }
-
     };
 
     // FILTER THE DISPLAYED POKEMON DEPENDING ON TYPE FILTER
     useEffect(() => {
-        if (currentFilter === "all") {
-            setDisplayedPokemon(pokemonData);
+        if (currentFilter === PokemonType.ALL) {
+            setDisplayedPokemon(pokemonsData);
         } else {
-            setDisplayedPokemon(pokemonData
+            setDisplayedPokemon(pokemonsData
                 .filter(
                     pokemon => pokemon.types
                         .map(types => types.type.name)
                         .find(typeName => typeName === currentFilter)));
         };
-    }, [currentFilter, pokemonData]);
+    }, [currentFilter, pokemonsData]);
 
 
     return <div className="Pokeball">
@@ -77,17 +73,18 @@ export const Pokeball = () => {
         />
         <div className={`Pokeball-pokedex ${showPokedex ? "m-show" : ""}`}>
             <TypeSelector
-                type={(type: any) => setCurrentFilter(type)}
+                onChange={(type: PokemonType) => setCurrentFilter(type)}
             />
-            {displayedPokemon && displayedPokemon.map((pokemon: any, index: any) => (
-                <Fragment key={pokemon.id}>
-                    <PokemonRow
-                        rowIndex={index}
-                        pokemon={pokemon}
-                        isClicked={(pokemon: Pokemon) => showPokemon(pokemon)} // Does : gives pokemon data to the modal  
-                        isSelected={modalData && pokemon.name === modalData.name && showModal === true ? true : false}
-                    />
-                </Fragment>
+            {displayedPokemon && displayedPokemon.map((pokemon: Pokemon, index: number) => (
+
+                <PokemonRow
+                    key={pokemon.id}
+                    rowIndex={index}
+                    pokemon={pokemon}
+                    isClicked={(pokemon: Pokemon) => setModalData(pokemon)} // Does : brings the clicked pokemon to the modal  
+                    isSelected={modalData && pokemon.name === modalData.name ? true : false}
+                />
+
             ))}
             <button
                 className="Pokeball-loadMoreButton"
@@ -98,12 +95,12 @@ export const Pokeball = () => {
 
         </div>
         <PokeballBottom />
-        {showModal && (
+        {modalData && (
             <PokemonModal
                 pokemon={modalData}
-                close={() => setShowModal(false)} // Does : take close function from child
-                onChange={(increment: any) => changePokemon(increment)} // Does : take previous or next functions from child
-                lastPokemon={pokemonData[pokemonData.length - 1].id} // Gives id of the last pokemon loaded in the Pokeball
+                close={() => setModalData(undefined)} // Does : take close function from child
+                onChange={(increment: number) => changePokemon(increment)} // Does : take previous or next functions from child
+                lastPokemon={pokemonsData[pokemonsData.length - 1].id} // Gives id of the last pokemon loaded in the Pokeball
             />
         )}
     </div>;

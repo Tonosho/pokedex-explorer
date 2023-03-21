@@ -27,6 +27,7 @@ export const PokemonRow = ({
         <div className="PokemonRow-items">
 
           <img
+            className="PokemonRow-illustration"
             src={pokemon.sprites.front_default}
             alt={`Illustration of ${pokemon.name}`}
           />

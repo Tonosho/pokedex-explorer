@@ -1,6 +1,8 @@
 export type Pokemon = {
+    height: number,
     id: number,
     name: string,
+    order: number,
     sprites: {
         back_default: string,
         back_shiny: string,
@@ -11,5 +13,6 @@ export type Pokemon = {
         base_stat: number,
         stat: { name: string }
     }[],
-    types: { type: { name: string } }[]
+    types: { type: { name: string } }[],
+    weight: number
 };
