@@ -34,24 +34,16 @@ export const Pokeball = () => {
                 const pokemonData = {
                     ...fetchedInfo,
                     name: capitalizedName,
-                } as Pokemon;
+                } as Pokemon; // Does : set a capitalized name in the pokemon object 
                 pokemons.push(pokemonData)
             }
             return pokemons;
         };
+
         pokedexData().then(newData => newData && setPokemonsData([...pokemonsData].concat(newData)));
+
     }, [offset]);
 
-
-    // CHANGE TO PREVIOUS / NEXT POKEMON IN MODAL
-    const changePokemon = (increment: number) => {
-        if (!modalData) return;
-        for (let pokemon of pokemonsData) {
-            if (pokemon.id === modalData.id + increment) {
-                setModalData(pokemon)
-            }
-        }
-    };
 
     // FILTER THE DISPLAYED POKEMON DEPENDING ON TYPE FILTER
     useEffect(() => {
@@ -66,6 +58,16 @@ export const Pokeball = () => {
         };
     }, [currentFilter, pokemonsData]);
 
+
+    // CHANGE TO PREVIOUS / NEXT POKEMON IN MODAL
+    const changePokemon = (increment: number) => {
+        if (!modalData) return;
+        for (let pokemon of pokemonsData) {
+            if (pokemon.id === modalData.id + increment) {
+                setModalData(pokemon)
+            }
+        }
+    };
 
     return <div className="Pokeball">
         <PokeballTop

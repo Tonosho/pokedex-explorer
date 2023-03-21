@@ -9,6 +9,7 @@ import "./App.css";
 
 // FONCTIONNEL
 // [] corriger index quand on charge des nouveaux pokemon ?
+// [] transformer les filtres en boutons dans une modal
 
 // DESIGN
 // [] espacement v mobile
