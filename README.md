@@ -1,4 +1,6 @@
-A simple Pokedex Explorer, based on pokeapi.com and bluit with React / Typescript.
+A simple Pokedex Explorer, based on pokeapi.com and built with React / Typescript.
+
+Work in progress.
 
 ## Available Scripts
 
