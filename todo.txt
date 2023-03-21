@@ -1,0 +1,18 @@
+// TO DO
+
+// IDEES
+// [] pagination du pokedex
+// [] pouvoir utiliser le clavier
+// [] auto load en bas de page
+
+// FONCTIONNEL
+// [] "loading..." pendant le fetch
+// [] transformer les filtres en boutons dans une modal
+
+// DESIGN
+// [] responsive des rows sur mobile
+// [] responsive des texts sur mobile
+// [] couleurs / gradient
+// [] afficher types sous formes de boutons
+
+// API LINK : "https://pokeapi.co/api/v2/pokemon?limit=25&offset=0"
