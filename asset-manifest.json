@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/github.io/pokedex-explorer.git/static/css/main.799f7378.css",
-    "main.js": "/github.io/pokedex-explorer.git/static/js/main.a1094252.js",
-    "static/js/787.4744a0b7.chunk.js": "/github.io/pokedex-explorer.git/static/js/787.4744a0b7.chunk.js",
-    "static/media/pokedexIcon.png": "/github.io/pokedex-explorer.git/static/media/pokedexIcon.c3d99f2c70aabbf10cc0.png",
-    "index.html": "/github.io/pokedex-explorer.git/index.html",
-    "main.799f7378.css.map": "/github.io/pokedex-explorer.git/static/css/main.799f7378.css.map",
-    "main.a1094252.js.map": "/github.io/pokedex-explorer.git/static/js/main.a1094252.js.map",
-    "787.4744a0b7.chunk.js.map": "/github.io/pokedex-explorer.git/static/js/787.4744a0b7.chunk.js.map"
+    "main.css": "/pokedex-explorer/static/css/main.799f7378.css",
+    "main.js": "/pokedex-explorer/static/js/main.cce08381.js",
+    "static/js/787.4744a0b7.chunk.js": "/pokedex-explorer/static/js/787.4744a0b7.chunk.js",
+    "static/media/pokedexIcon.png": "/pokedex-explorer/static/media/pokedexIcon.c3d99f2c70aabbf10cc0.png",
+    "index.html": "/pokedex-explorer/index.html",
+    "main.799f7378.css.map": "/pokedex-explorer/static/css/main.799f7378.css.map",
+    "main.cce08381.js.map": "/pokedex-explorer/static/js/main.cce08381.js.map",
+    "787.4744a0b7.chunk.js.map": "/pokedex-explorer/static/js/787.4744a0b7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.799f7378.css",
-    "static/js/main.a1094252.js"
+    "static/js/main.cce08381.js"
   ]
 }
