@@ -1,6 +1,6 @@
 {
   "name": "podekex-explorer",
-  "homepage": "https://tonosho/github.io/pokedex-explorer.git",
+  "homepage": "http://tonosho.github.io/pokedex-explorer",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
